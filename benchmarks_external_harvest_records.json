@@ -1,0 +1,444 @@
+{
+ "product": "uk_winter_wheat_external_benchmarks",
+ "note": "Append-only. Records are never edited: a revised figure is a new record whose `supersedes` names the one it replaces.",
+ "records": [
+  {
+   "id": "ahdb-early-bird-survey-2025-12-01",
+   "source": "AHDB Early Bird Survey",
+   "url": "https://projectblue.blob.core.windows.net/media/Default/Market%20Intelligence/cereals-oilseeds/survey-results/early-bird-survey/Early%20Bird%20Survey%20December%202025%20-%20FINAL.pdf",
+   "published": "2025-12-01",
+   "data_to": null,
+   "geography": "UK",
+   "crop": "all wheat",
+   "basis": "planting intentions for harvest 2026",
+   "metrics": {
+    "area_Mha": 1.695,
+    "change_vs_prior_pct": 1.0
+   },
+   "retrieved_utc": "2026-08-12T23:26:28+00:00",
+   "quote": "The total UK wheat area is forecast to increase slightly (+1%) from 2025 to 1,695 Kha",
+   "supersedes": null,
+   "note": null
+  },
+  {
+   "id": "defra-cereal-and-oilseed-production-uk-2026-01-01",
+   "source": "Defra Cereal and oilseed production UK",
+   "url": "https://www.gov.uk/government/statistics/cereal-and-oilseed-rape-production/cereal-and-oilseed-production-in-the-united-kingdom-2025",
+   "published": "2026-01-01",
+   "data_to": null,
+   "geography": "UK",
+   "crop": "all wheat",
+   "basis": "final, 2025 harvest",
+   "metrics": {
+    "area_Mha": 1.7,
+    "yield_t_ha": 7.2,
+    "production_Mt": 12.0
+   },
+   "retrieved_utc": "2026-08-12T23:26:28+00:00",
+   "quote": null,
+   "supersedes": null,
+   "note": "Prior-season comparator, not a 2026 figure."
+  },
+  {
+   "id": "ahdb-crop-condition-2026-05-29",
+   "source": "AHDB Crop Condition",
+   "url": "https://ahdb.org.uk/news/analyst-insight-dry-start-to-may-hits-uk-crop-conditions",
+   "published": "2026-05-29",
+   "data_to": "2026-05-25",
+   "geography": "UK",
+   "crop": "winter wheat",
+   "basis": "crop condition rating, pre-harvest",
+   "metrics": {
+    "good_or_excellent_pct": 64.0,
+    "prior_month_good_or_excellent_pct": 74.0
+   },
+   "retrieved_utc": "2026-08-12T23:35:41+00:00",
+   "quote": "64% of winter wheat is now rated good or excellent, down from 74% a month ago",
+   "supersedes": null,
+   "note": "Dry April/early May. Condition is a leading indicator, not a yield estimate."
+  },
+  {
+   "id": "ahdb-crop-condition-2026-06-29",
+   "source": "AHDB Crop Condition",
+   "url": "https://ahdb.org.uk/news/crop-ratings-slip-after-dry-spring-but-harvest-hope-remains",
+   "published": "2026-06-29",
+   "data_to": "2026-06-22",
+   "geography": "UK",
+   "crop": "winter wheat",
+   "basis": "crop condition rating, pre-harvest",
+   "metrics": {
+    "good_or_excellent_pct": 58.0,
+    "very_poor_pct": 1.0,
+    "poor_pct": 4.0,
+    "fair_pct": 37.0,
+    "good_pct": 49.0,
+    "excellent_pct": 9.0
+   },
+   "retrieved_utc": "2026-08-12T23:35:41+00:00",
+   "quote": "Very poor 1%, poor 4%, fair 37%, good 49%, excellent 9%",
+   "supersedes": null,
+   "note": "Slipped from 64% in May. AHDB: moisture availability the key determinant of final yields."
+  },
+  {
+   "id": "ahdb-harvest-progress-2026-07-31",
+   "source": "AHDB Harvest Progress",
+   "url": "https://ahdb.org.uk/cereals-oilseeds/gb-harvest-progress",
+   "published": "2026-07-31",
+   "data_to": "2026-07-27",
+   "geography": "UK",
+   "crop": "all wheat",
+   "basis": "harvested to date (54% cut)",
+   "metrics": {
+    "yield_t_ha": 6.8,
+    "pct_harvested": 54.0,
+    "farm_min_t_ha": 3.9,
+    "farm_max_t_ha": 11.5,
+    "prior_year_t_ha": 7.2,
+    "avg10_t_ha": 7.9
+   },
+   "retrieved_utc": "2026-08-12T23:26:28+00:00",
+   "quote": "Average wheat yields are currently estimated at 6.8 t/ha, compared with 7.2 t/ha in 2025 and the 10-year average of 7.9 t/ha",
+   "supersedes": null,
+   "note": "Week 3 report; earliest harvest since records began 2006. Next reports 2026-08-14, 08-28, 09-25."
+  },
+  {
+   "id": "defra-auk2021-uk-wheat-final-2019",
+   "source": "Defra Agriculture in the United Kingdom 2021, Table 7.2a",
+   "url": "https://www.gov.uk/government/statistics/agriculture-in-the-united-kingdom-2021/chapter-7-crops",
+   "published": "2021-01-01",
+   "data_to": "2019-12-31",
+   "geography": "UK",
+   "crop": "all wheat",
+   "basis": "final, 2019 harvest",
+   "metrics": {
+    "area_kha": 1816,
+    "yield_t_ha": 8.9,
+    "production_kt": 16225
+   },
+   "retrieved_utc": "2026-08-14T15:15:50.129622+00:00",
+   "quote": null,
+   "supersedes": null,
+   "note": "Verified against area x yield = production. AUK prints ~3 years per edition, so this series is stitched across editions; the edition is named in the id."
+  },
+  {
+   "id": "defra-auk2021-uk-wheat-final-2020",
+   "source": "Defra Agriculture in the United Kingdom 2021, Table 7.2a",
+   "url": "https://www.gov.uk/government/statistics/agriculture-in-the-united-kingdom-2021/chapter-7-crops",
+   "published": "2021-01-01",
+   "data_to": "2020-12-31",
+   "geography": "UK",
+   "crop": "all wheat",
+   "basis": "final, 2020 harvest",
+   "metrics": {
+    "area_kha": 1387,
+    "yield_t_ha": 7.0,
+    "production_kt": 9658
+   },
+   "retrieved_utc": "2026-08-14T15:15:50.129622+00:00",
+   "quote": null,
+   "supersedes": null,
+   "note": "Verified against area x yield = production. AUK prints ~3 years per edition, so this series is stitched across editions; the edition is named in the id."
+  },
+  {
+   "id": "defra-auk2021-uk-wheat-final-2021",
+   "source": "Defra Agriculture in the United Kingdom 2021, Table 7.2a",
+   "url": "https://www.gov.uk/government/statistics/agriculture-in-the-united-kingdom-2021/chapter-7-crops",
+   "published": "2021-01-01",
+   "data_to": "2021-12-31",
+   "geography": "UK",
+   "crop": "all wheat",
+   "basis": "final, 2021 harvest",
+   "metrics": {
+    "area_kha": 1790,
+    "yield_t_ha": 7.8,
+    "production_kt": 13988
+   },
+   "retrieved_utc": "2026-08-14T15:15:50.129622+00:00",
+   "quote": null,
+   "supersedes": null,
+   "note": "Verified against area x yield = production. AUK prints ~3 years per edition, so this series is stitched across editions; the edition is named in the id."
+  },
+  {
+   "id": "defra-auk2023-uk-wheat-final-2022",
+   "source": "Defra Agriculture in the United Kingdom 2023, Table 7.2a",
+   "url": "https://www.gov.uk/government/statistics/agriculture-in-the-united-kingdom-2023/chapter-7-crops",
+   "published": "2023-01-01",
+   "data_to": "2022-12-31",
+   "geography": "UK",
+   "crop": "all wheat",
+   "basis": "final, 2022 harvest",
+   "metrics": {
+    "area_kha": 1813,
+    "yield_t_ha": 8.6,
+    "production_kt": 15540
+   },
+   "retrieved_utc": "2026-08-14T15:15:50.129622+00:00",
+   "quote": null,
+   "supersedes": null,
+   "note": "Verified against area x yield = production. AUK prints ~3 years per edition, so this series is stitched across editions; the edition is named in the id."
+  },
+  {
+   "id": "defra-auk2025-uk-wheat-final-2023",
+   "source": "Defra Agriculture in the United Kingdom 2025, Table 7.2a",
+   "url": "https://www.gov.uk/government/statistics/agriculture-in-the-united-kingdom-2025/chapter-7-crops",
+   "published": "2025-01-01",
+   "data_to": "2023-12-31",
+   "geography": "UK",
+   "crop": "all wheat",
+   "basis": "final, 2023 harvest",
+   "metrics": {
+    "area_kha": 1720,
+    "yield_t_ha": 8.1,
+    "production_kt": 13980
+   },
+   "retrieved_utc": "2026-08-14T15:15:50.129622+00:00",
+   "quote": null,
+   "supersedes": null,
+   "note": "Verified against area x yield = production. AUK prints ~3 years per edition, so this series is stitched across editions; the edition is named in the id."
+  },
+  {
+   "id": "defra-auk2025-uk-wheat-final-2024",
+   "source": "Defra Agriculture in the United Kingdom 2025, Table 7.2a",
+   "url": "https://www.gov.uk/government/statistics/agriculture-in-the-united-kingdom-2025/chapter-7-crops",
+   "published": "2025-01-01",
+   "data_to": "2024-12-31",
+   "geography": "UK",
+   "crop": "all wheat",
+   "basis": "final, 2024 harvest",
+   "metrics": {
+    "area_kha": 1531,
+    "yield_t_ha": 7.3,
+    "production_kt": 11146
+   },
+   "retrieved_utc": "2026-08-14T15:15:50.129622+00:00",
+   "quote": null,
+   "supersedes": null,
+   "note": "Verified against area x yield = production. AUK prints ~3 years per edition, so this series is stitched across editions; the edition is named in the id."
+  },
+  {
+   "id": "defra-auk2025-uk-wheat-final-2025",
+   "source": "Defra Agriculture in the United Kingdom 2025, Table 7.2a",
+   "url": "https://www.gov.uk/government/statistics/agriculture-in-the-united-kingdom-2025/chapter-7-crops",
+   "published": "2025-01-01",
+   "data_to": "2025-12-31",
+   "geography": "UK",
+   "crop": "all wheat",
+   "basis": "final, 2025 harvest",
+   "metrics": {
+    "area_kha": 1670,
+    "yield_t_ha": 7.2,
+    "production_kt": 11958
+   },
+   "retrieved_utc": "2026-08-14T15:15:50.129622+00:00",
+   "quote": null,
+   "supersedes": null,
+   "note": "Verified against area x yield = production. AUK prints ~3 years per edition, so this series is stitched across editions; the edition is named in the id."
+  },
+  {
+   "id": "defra-revision-2022-area",
+   "source": "Defra / AHDB",
+   "url": "https://www.gov.uk/government/statistics/agriculture-in-the-united-kingdom-2025/chapter-7-crops",
+   "published": "2026-08-14",
+   "data_to": null,
+   "geography": "UK",
+   "crop": "all wheat",
+   "basis": "revision between published estimates",
+   "metrics": {
+    "area_kha_auk2022": 1809,
+    "area_kha_auk2023": 1813,
+    "revision_kha": 4
+   },
+   "retrieved_utc": "2026-08-14T15:15:50.129622+00:00",
+   "quote": null,
+   "supersedes": null,
+   "note": "2022 UK wheat area revised between AUK editions"
+  },
+  {
+   "id": "defra-revision-2023-production",
+   "source": "Defra / AHDB",
+   "url": "https://www.gov.uk/government/statistics/agriculture-in-the-united-kingdom-2025/chapter-7-crops",
+   "published": "2026-08-14",
+   "data_to": null,
+   "geography": "UK",
+   "crop": "all wheat",
+   "basis": "revision between published estimates",
+   "metrics": {
+    "production_kt_auk2023": 13890,
+    "production_kt_auk2025": 13980,
+    "revision_kt": 90
+   },
+   "retrieved_utc": "2026-08-14T15:15:50.129622+00:00",
+   "quote": null,
+   "supersedes": null,
+   "note": "2023 UK wheat production revised between AUK editions"
+  },
+  {
+   "id": "ahdb-provisional-vs-defra-final-2025",
+   "source": "Defra / AHDB",
+   "url": "https://www.gov.uk/government/statistics/agriculture-in-the-united-kingdom-2025/chapter-7-crops",
+   "published": "2026-08-14",
+   "data_to": null,
+   "geography": "UK",
+   "crop": "all wheat",
+   "basis": "revision between published estimates",
+   "metrics": {
+    "revision_kt": 122,
+    "revision_pct": 1.0
+   },
+   "retrieved_utc": "2026-08-14T15:15:50.129622+00:00",
+   "quote": null,
+   "supersedes": null,
+   "note": "Defra final exceeded AHDB provisional UK estimate"
+  },
+  {
+   "id": "usda-fas-annual-2026-04-30",
+   "source": "USDA FAS Grain and Feed Annual",
+   "url": "https://apps.fas.usda.gov/newgainapi/api/Report/DownloadReportByFileName",
+   "published": "2026-04-30",
+   "geography": "UK",
+   "crop": "all wheat",
+   "basis": "pre-drought production forecast, standard commercial basis",
+   "metrics": {
+    "yield_t_ha": 7.94,
+    "production_mt": 13.5,
+    "area_mha": 1.7
+   },
+   "note": "Superseded by later weather evidence. Via UK_Winter_Wheat_2026_Investigation_Pack, compiled 2026-08-19.",
+   "data_to": null,
+   "retrieved_utc": "2026-08-19T17:01:22.986413+00:00",
+   "quote": null,
+   "supersedes": null
+  },
+  {
+   "id": "ahdb-condition-regression-2026",
+   "source": "AHDB crop development report (regression)",
+   "url": "https://ahdb.org.uk/cereals-oilseeds/crop-development-report",
+   "published": "2026-06-22",
+   "geography": "UK",
+   "crop": "all wheat proxy",
+   "basis": "2019-2025 regression of Defra final on final good/excellent score (58%)",
+   "metrics": {
+    "yield_t_ha": 7.74,
+    "r2": 0.85,
+    "corr": 0.92,
+    "loo_rmse": 0.36
+   },
+   "note": "Final score predates record-dry July. Via UK_Winter_Wheat_2026_Investigation_Pack, compiled 2026-08-19.",
+   "data_to": null,
+   "retrieved_utc": "2026-08-19T17:01:22.986413+00:00",
+   "quote": null,
+   "supersedes": null
+  },
+  {
+   "id": "ahdb-rl-control-regression-2026",
+   "source": "AHDB Recommended List harvest results (regression)",
+   "url": "https://ahdb.org.uk/knowledge-library/winter-wheat-recommended-and-candidate-list-harvest-results",
+   "published": "2026-08-18",
+   "geography": "UK",
+   "crop": "all wheat proxy",
+   "basis": "2018-2025 regression of Defra final on RL treated-control mean; 2026 control 9.75 t/ha (weakest of series), 18 sites, provisional",
+   "metrics": {
+    "yield_t_ha": 6.72,
+    "pi_low": 6.11,
+    "pi_high": 7.33,
+    "r2": 0.93,
+    "loo_rmse": 0.26,
+    "pi_level": 0.95
+   },
+   "note": "Provisional network, incomplete coverage. Via UK_Winter_Wheat_2026_Investigation_Pack, compiled 2026-08-19.",
+   "data_to": null,
+   "retrieved_utc": "2026-08-19T17:01:22.986413+00:00",
+   "quote": null,
+   "supersedes": null
+  },
+  {
+   "id": "usda-wasde-implied-2026-08-12",
+   "source": "USDA WASDE",
+   "url": "https://www.usda.gov/oce/commodity/wasde/wasde0826.pdf",
+   "published": "2026-08-12",
+   "geography": "UK",
+   "crop": "all wheat",
+   "basis": "12.0 Mt production divided by April 1.7 Mha area assumption",
+   "metrics": {
+    "yield_t_ha": 7.06,
+    "production_mt": 12.0
+   },
+   "note": "Derived yield; area may have changed. Via UK_Winter_Wheat_2026_Investigation_Pack, compiled 2026-08-19.",
+   "data_to": null,
+   "retrieved_utc": "2026-08-19T17:01:22.986413+00:00",
+   "quote": null,
+   "supersedes": null
+  },
+  {
+   "id": "ahdb-harvest-survey-2026-08-10-moisture-scenarios",
+   "source": "AHDB GB harvest survey (moisture scenarios)",
+   "url": "https://ahdb.org.uk/cereals-oilseeds",
+   "published": "2026-08-10",
+   "geography": "GB",
+   "crop": "all wheat",
+   "basis": "6.7 t/ha reported-convention figure standardised to 14.5% moisture at survey moistures 13% / 12%",
+   "metrics": {
+    "yield_t_ha_at_13pct": 6.82,
+    "yield_t_ha_at_12pct": 6.9
+   },
+   "note": "Illustrative sensitivity, not a national correction (no paired weights). Post-2022 convention does not uplift dry loads. Via UK_Winter_Wheat_2026_Investigation_Pack, compiled 2026-08-19.",
+   "data_to": null,
+   "retrieved_utc": "2026-08-19T17:01:22.986413+00:00",
+   "quote": null,
+   "supersedes": null
+  },
+  {
+   "id": "reuters-eciu-2026-08-04",
+   "source": "Reuters / ECIU",
+   "url": null,
+   "published": "2026-08-04",
+   "geography": "UK",
+   "crop": "all wheat",
+   "basis": "secondary analysis citing provisional AHDB estimate",
+   "metrics": {
+    "yield_t_ha": 6.8
+   },
+   "note": "Not independent of the AHDB survey. Via UK_Winter_Wheat_2026_Investigation_Pack, compiled 2026-08-19.",
+   "data_to": null,
+   "retrieved_utc": "2026-08-19T17:01:22.986413+00:00",
+   "quote": null,
+   "supersedes": null
+  },
+  {
+   "id": "usda-wasde-uk-production-2026-07-10",
+   "source": "USDA WASDE (WASDE-673)",
+   "url": "https://www.usda.gov/oce/commodity/wasde/wasde0726.pdf",
+   "published": "2026-07-10",
+   "data_to": null,
+   "geography": "UK",
+   "crop": "all wheat",
+   "basis": "WASDE world wheat S&U, UK 2026/27 production projection",
+   "metrics": {
+    "production_mt": 13.5,
+    "june_column_mt": 13.5
+   },
+   "retrieved_utc": "2026-08-19T17:45:22.631899+00:00",
+   "quote": "United Kingdom ... Jun 13.50 / Jul 13.50 (WASDE-673-19)",
+   "supersedes": null,
+   "note": "Held unchanged from June; carries the April FAS 1.7 Mha area assumption. Cut to 12.0 Mt in WASDE-674 (2026-08-12)."
+  },
+  {
+   "id": "usda-wasde-uk-production-2026-08-12",
+   "source": "USDA WASDE (WASDE-674)",
+   "url": "https://www.usda.gov/oce/commodity/wasde/wasde0826.pdf",
+   "published": "2026-08-12",
+   "data_to": null,
+   "geography": "UK",
+   "crop": "all wheat",
+   "basis": "WASDE world wheat S&U, UK 2026/27 production projection",
+   "metrics": {
+    "production_mt": 12.0,
+    "july_column_mt": 13.5
+   },
+   "retrieved_utc": "2026-08-19T17:45:22.631910+00:00",
+   "quote": "United Kingdom ... Jul 13.50 / Aug 12.00 (WASDE-674-19)",
+   "supersedes": "usda-wasde-uk-production-2026-07-10",
+   "note": "-11% single-step revision; verified against the primary PDF 2026-08-19."
+  }
+ ]
+}

@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WXYYG3BB6R"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WXYYG3BB6R');
+  </script>
+<meta charset="utf-8">
+<meta name="author" content="UCL · NCEO · UKCEH · AgZero+">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UK Winter Wheat 2026 — In-Season Satellite Forecast</title>
+<meta name="description" content="Independent satellite forecast of UK winter wheat area and yield for 2026, validated against Defra final statistics, with analysis of official forecast revisions.">
+<link rel="icon" href="data:,">
+<style>
+:root{
+  color-scheme: light;
+  --page:#f9f9f7; --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+  --grid:#e1e0d9; --ring:rgba(11,11,11,.10); --accent:#2a78d6;
+  --wheat:#b8890f; --up:#006300; --down:#d03b3b;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    color-scheme: dark;
+    --page:#0d0d0d; --surface:#1a1a19; --ink:#fff; --ink2:#c3c2b7; --muted:#898781;
+    --grid:#2c2c2a; --ring:rgba(255,255,255,.10); --accent:#3987e5;
+    --wheat:#d9b83a; --up:#0ca30c; --down:#e66767;
+  }
+  img.fig{filter:invert(.92) hue-rotate(180deg)} /* keep figures legible on dark */
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--page);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-size:16px;line-height:1.62}
+.wrap{max-width:860px;margin:0 auto;padding:0 22px}
+a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
+header{padding:54px 0 26px;border-bottom:1px solid var(--ring);margin-bottom:34px}
+.eyebrow{font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);
+  font-weight:600}
+h1{font-size:clamp(28px,4.4vw,40px);line-height:1.16;margin:12px 0 10px;font-weight:680;
+  letter-spacing:-.02em;max-width:20ch}
+.lede{font-size:18.5px;color:var(--ink2);margin:0;max-width:62ch}
+.byline{margin-top:18px;font-size:13.5px;color:var(--muted)}
+h2{font-size:23px;margin:56px 0 6px;font-weight:660;letter-spacing:-.01em;scroll-margin-top:20px}
+h2 .num{color:var(--wheat);font-variant-numeric:tabular-nums;margin-right:10px}
+h3{font-size:16px;margin:30px 0 6px;font-weight:640}
+p{margin:14px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:12px;
+  margin:26px 0 8px}
+.kpi{background:var(--surface);border:1px solid var(--ring);border-radius:13px;padding:14px 16px}
+.kpi .k{font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);
+  font-weight:600}
+.kpi .v{font-size:25px;font-weight:680;margin-top:3px;letter-spacing:-.02em;
+  font-variant-numeric:tabular-nums}
+.kpi .d{font-size:12.5px;color:var(--ink2);margin-top:2px}
+figure{margin:26px 0}
+img.fig{width:100%;height:auto;border:1px solid var(--ring);border-radius:12px;
+  background:var(--surface);display:block}
+figcaption{font-size:13.5px;color:var(--muted);margin-top:9px}
+table{border-collapse:collapse;width:100%;font-size:14.5px;margin:16px 0}
+th,td{text-align:right;padding:8px 10px;border-bottom:1px solid var(--ring);
+  font-variant-numeric:tabular-nums;white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);
+  font-weight:600}
+tbody tr:hover{background:var(--surface)}
+td.hi{font-weight:680;color:var(--wheat)}
+details{margin:14px 0;border:1px solid var(--ring);border-radius:11px;background:var(--surface)}
+details summary{cursor:pointer;padding:11px 15px;font-size:14px;color:var(--ink2);
+  font-weight:600;list-style:none}
+details summary::-webkit-details-marker{display:none}
+details summary::before{content:"▸ ";color:var(--muted)}
+details[open] summary::before{content:"▾ "}
+details .body{padding:0 15px 12px}
+.callout{background:var(--surface);border:1px solid var(--ring);border-left:3px solid var(--wheat);
+  border-radius:0 12px 12px 0;padding:16px 20px;margin:26px 0}
+.callout.warn{border-left-color:var(--down)}
+.callout h3{margin-top:0}
+.pill{display:inline-block;font-size:11.5px;border:1px solid var(--ring);border-radius:20px;
+  padding:2px 10px;color:var(--ink2);background:var(--page);margin-right:5px}
+footer{margin:64px 0 0;padding:26px 0 60px;border-top:1px solid var(--ring);
+  font-size:13px;color:var(--muted)}
+.toc{background:var(--surface);border:1px solid var(--ring);border-radius:13px;
+  padding:14px 20px;margin:30px 0;font-size:14.5px}
+.toc ol{margin:6px 0 0;padding-left:20px} .toc li{margin:3px 0}
+@media print{ .toc,details{display:none} body{font-size:11pt} h2{page-break-after:avoid}
+  figure{page-break-inside:avoid} }
+/* Mobile. The tables are nowrap and up to 667px wide, and nothing was containing
+   them, so the DOCUMENT went to 690px on a 390px phone -- the whole page panned
+   sideways and every paragraph ran off the screen. display:block turns each
+   table into its own scroll container so the overflow stays inside the table. */
+@media (max-width:720px){
+  .wrap{padding:0 18px}
+  table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;
+        width:auto;max-width:100%;font-size:13.5px}
+  th,td{padding:8px}
+  .lede{font-size:17px}
+  h2{font-size:21px;margin-top:44px}
+  .kpis{grid-template-columns:repeat(auto-fit,minmax(136px,1fr));gap:10px}
+  .kpi .v{font-size:22px}
+  img.fig{border-radius:10px}
+}
+</style>
+</head>
+<body>
+<header class="wrap">
+  <div class="eyebrow">Independent satellite estimate · Great Britain</div>
+  <h1>UK Winter Wheat 2026: a third below-average year</h1>
+  <p class="lede">A satellite forecast that has tracked Defra's official yield year by year
+    (r&nbsp;=&nbsp;0.93) puts the 2026 crop at 12.1&nbsp;Mt from 1.56&nbsp;M&nbsp;ha. We see a
+    year below the best of the record — but <b>no evidence of a collapse</b>. What we do see is
+    wide variation between fields, and a clear south-east to north gradient.</p>
+  <p class="byline">
+    <span class="pill">19 August 2026</span>
+    <span class="pill">issued 17 August · imagery to 1 August (DOY 213)</span><br>
+    Produced by UCL and the National Centre for Earth Observation (NCEO), with the
+    UK Centre for Ecology &amp; Hydrology (UKCEH), as part of the AgZero+ project.
+  </p>
+</header>
+
+<main class="wrap">
+
+<section class="kpis">
+  <div class="kpi"><div class="k">Wheat area</div><div class="v">1.558 <span style="font-size:16px">M ha</span></div><div class="d">±1.0% (90% CI) · 200,161 fields</div></div>
+  <div class="kpi"><div class="k">Mean yield</div><div class="v">7.70 <span style="font-size:16px">t/ha</span></div><div class="d">90% interval 7.13–8.28</div></div>
+  <div class="kpi"><div class="k">Production</div><div class="v">12.00 <span style="font-size:16px">Mt</span></div><div class="d">90% interval 11.10–12.90</div></div>
+  <div class="kpi"><div class="k">Crop value</div><div class="v">2.46 <span style="font-size:16px">bn £</span></div><div class="d">at £204.00/t</div></div>
+</section>
+
+<p>All figures here are <b>after correction</b>: the raw satellite estimate adjusted by a
+residual fitted against Defra finals and predicted from July rainfall. The fit absorbs,
+together, the harvest-period losses a satellite cannot see and the winter-wheat-versus-
+all-wheat basis — raw runs ~0.35 above Defra in a normal year — so corrected values are
+Defra-comparable by construction (<a href="#bias">section 3</a>). Since 20&nbsp;Aug the product headline is the raw, raster-faithful measurement (<b>7.70&nbsp;t/ha</b>) and this fitted value is presented as the labelled &ldquo;fitted route&rdquo;; on that basis 2026 comes out at <b>7.75&nbsp;t/ha</b>,
+<b>−0.6%</b> against the corrected 2018–25 mean of 7.80 — a year below the best of the
+record, but not a collapse.</p>
+
+<div class="toc">
+  <b>In this report</b>
+  <ol>
+    <li><a href="#context">Where the season sits</a></li>
+    <li><a href="#agree">An independent source that agrees</a></li>
+    <li><a href="#bias">Correcting the residual bias</a></li>
+    <li><a href="#area">Area — and the 2020 tell</a></li>
+    <li><a href="#variation">The variation is between fields</a></li>
+    <li><a href="#regional">Where the losses fell</a></li>
+    <li><a href="#revisions">Official figures are forecasts too</a></li>
+    <li><a href="#field">Every field, and the variation inside it</a></li>
+    <li><a href="#disagree">The open disagreement</a></li>
+    <li><a href="#method">Method, limits and data</a></li>
+  </ol>
+</div>
+
+<h2 id="context"><span class="num">1</span>Eight years of tracking the official figure</h2>
+<figure>
+  <img class="fig" src="figures/fig9_track_record.png?v=46c54e5"
+       alt="Left: raw satellite yield 2018-2026 against Defra finals with a 90 percent band, the 2026 forecast at 7.70 with a 90 percent interval and the AHDB survey at 6.7. Right: scatter of the uncorrected estimate against Defra, r = +0.93, slope 0.90.">
+  <figcaption>Left, the published (corrected) series against Defra, with the raw estimate in
+    grey behind. Right, validation on the <b>uncorrected</b> estimate — the correction is
+    fitted to Defra, so validating on the corrected series would be circular.</figcaption>
+</figure>
+<p>Across every settled harvest from 2019 to 2025 the satellite estimate has followed the
+official series: <b>r&nbsp;=&nbsp;+0.93</b> with a slope of <b>0.90</b>, meaning it captures
+the year-to-year swing almost one-for-one rather than reverting to an average. It called the
+2019 and 2022 highs, and the 2020 and 2024 lows, without ever seeing a farm return.</p>
+<p>That track record is what gives the 2026 number standing.</p>
+
+<h3>The 2026 forecast</h3>
+<p>The crop measures <b>7.70&nbsp;t/ha</b> raw; the fitted Defra-comparable route gives <b>7.75&nbsp;t/ha</b> — <b>−0.6%</b> against the
+corrected eight-year mean of 7.80. That places it above 2024 (7.25), 2025 (7.34) and 2020
+(7.08), and below 2019 (8.85), 2022 (8.60) and 2023 (8.18).</p>
+<p><b>We differ from the current AHDB in-season survey</b>, which reports 6.7&nbsp;t/ha at 85%
+cut. Our reading is that 2026 is <b>below the strongest years of the record, but that there is
+no evidence of a significant collapse in yield</b>. The gap between the two estimates is
+discussed in <a href="#disagree">section 9</a>.</p>
+
+<details><summary>Data — area-weighted yield by year</summary><div class="body">
+<table><thead><tr><th>Year</th><th>Raw</th><th>Published (corrected)</th><th>Defra final</th><th>Difference</th></tr></thead>
+<tbody>
+<tr><td>2018</td><td>7.54</td><td>7.48</td><td>—</td><td>—</td></tr>
+<tr><td>2019</td><td>9.19</td><td>8.85</td><td>8.9</td><td>−0.05</td></tr>
+<tr><td>2020</td><td>7.39</td><td>7.08</td><td>7.0</td><td>+0.08</td></tr>
+<tr><td>2021</td><td>8.02</td><td>7.59</td><td>7.8</td><td>−0.21</td></tr>
+<tr><td>2022</td><td>8.55</td><td>8.60</td><td>8.6</td><td>0.00</td></tr>
+<tr><td>2023</td><td>8.96</td><td>8.18</td><td>8.1</td><td>+0.08</td></tr>
+<tr><td>2024</td><td>7.68</td><td>7.25</td><td>7.3</td><td>−0.05</td></tr>
+<tr><td>2025</td><td>7.59</td><td>7.34</td><td>7.2</td><td>+0.14</td></tr>
+<tr><td class="hi">2026</td><td>7.70</td><td class="hi">7.75</td><td>not yet published</td><td>—</td></tr>
+</tbody></table>
+<p style="font-size:13.5px;color:var(--muted)">2018 has no Defra row: each
+<i>Agriculture in the United Kingdom</i> edition prints only about three years and a 2018 UK
+wheat table could not be sourced. It is excluded rather than estimated.</p>
+</div></details>
+
+<h2 id="agree"><span class="num">2</span>An independent source that agrees</h2>
+<figure>
+  <img class="fig" src="figures/fig2_yield_agreement.png?v=46c54e5"
+       alt="Scatter plot of satellite yield against Defra final yield for 2019-2025 with a 1:1 line; r = +0.93, slope 0.90, bias +0.35 t/ha.">
+  <figcaption>Farm returns versus satellite reflectance. The two methods share no inputs.</figcaption>
+</figure>
+<p>Across the seven years where Defra finals are verifiable, the satellite product correlates
+at <b>r&nbsp;=&nbsp;+0.93</b> with a regression slope of <b>0.90</b> — it tracks the
+year-to-year swing almost one-for-one, rather than reverting to a long-run average.</p>
+<p>The <b>+0.35&nbsp;t/ha mean bias is expected, not error</b>. Defra reports <i>all wheat,
+UK</i>; this product reports <i>winter wheat, Great Britain</i>, and winter wheat outyields
+spring wheat.</p>
+
+
+<h2 id="bias"><span class="num">3</span>Correcting the residual bias</h2>
+<p>The +0.35&nbsp;t/ha offset is a basis difference, and it can simply be subtracted. Doing so
+cuts the error by a third. But a second correction does far better — and explains what the
+offset is actually made of.</p>
+<figure>
+  <img class="fig" src="figures/fig7_bias_scatter.png?v=46c54e5"
+       alt="Two scatter panels of satellite estimate against Defra final yield. Grey open circles are raw estimates with arrows to gold corrected points. Left panel, constant correction, leave-one-out RMSE 0.294. Right panel, July-rainfall aware correction, leave-one-out RMSE 0.151.">
+  <figcaption>Grey is the raw estimate, gold the corrected one; the arrow is the adjustment.
+    Errors are leave-one-out, because seven years flatter any in-sample fit.</figcaption>
+</figure>
+<table><thead><tr><th>Correction</th><th>Parameters</th><th>LOO RMSE (t/ha)</th><th>vs raw</th></tr></thead>
+<tbody>
+<tr><td>none</td><td>0</td><td>0.435</td><td>—</td></tr>
+<tr><td>constant −0.35 t/ha</td><td>1</td><td>0.294</td><td>−32%</td></tr>
+<tr><td>linear calibration</td><td>2</td><td>0.350</td><td>−20%</td></tr>
+<tr><td class="hi">July-rainfall aware</td><td>2</td><td class="hi">0.151</td><td class="hi">−65%</td></tr>
+</tbody></table>
+<p>Linear calibration is <b>rejected</b>: it fits marginally better in-sample yet performs
+worse out-of-sample than the single constant — a second parameter buying nothing but
+overfitting on seven points.</p>
+<div class="callout">
+  <h3>Why rainfall, and what the bias really is</h3>
+  <p>The satellite measures the <b>standing crop</b> — canopy development and senescence
+  timing. Defra records what reached the barn. Between them sits the harvest, and a wet July
+  causes lodging, sprouting and physical losses that no satellite can see.</p>
+  <p>The residual tracks England&rsquo;s July rainfall at <b>r&nbsp;=&nbsp;+0.90</b>. The two
+  extremes prove it: <b>2023</b> had 122&nbsp;mm (+84% on normal, the sixth wettest UK July
+  on record) and gave our largest overshoot at +0.86&nbsp;t/ha; <b>2022</b> had 23&nbsp;mm
+  (−65%) and is the only year we read <i>below</i> Defra.</p>
+  <p style="margin-bottom:0">Correcting for it lands 2023 at 8.19 against Defra&rsquo;s 8.1,
+  and 2022 at 8.60 against 8.6. The constant correction cannot do this — it pushes 2022
+  <i>further</i> from truth, because that year had no harvest losses to remove.</p>
+</div>
+<figure>
+  <img class="fig" src="figures/fig8_bias_temporal.png?v=46c54e5"
+       alt="Time series 2018-2026 showing Defra finals in blue, raw satellite estimates in grey and bias-corrected estimates in gold, which track Defra closely; 2026 corrected to 7.27 with the AHDB survey marked at 6.70.">
+  <figcaption>After correction the satellite and Defra series sit almost on top of each other
+    from 2019 to 2025.</figcaption>
+</figure>
+<p>Applied to 2026, the constant correction gives a Defra-equivalent of <b>7.27&nbsp;t/ha</b>.
+The rainfall-aware correction gives <b>7.7</b> — because a record-dry July implies almost no
+harvest losses to subtract, so the raw estimate needs little adjustment.</p>
+<h3>What we publish</h3>
+<p><b>The July-rainfall correction is the published model.</b> Every figure in this report is
+after it. It reduces out-of-sample error by 65% and, unlike a constant offset, it gets the
+dry years right as well as the wet ones.</p>
+<p>One safeguard is applied. July 2026 was <b>6.5&nbsp;mm</b> in England — 10% of average, and
+less than half the previous record of 13.4&nbsp;mm set in 1911. That is far outside the
+23–122&nbsp;mm range the relationship was fitted on, so <b>the rainfall input is clamped to
+the fitted domain</b>. Without the clamp the line, which has no physical floor, would keep
+adding yield as rainfall approaches zero (+0.19&nbsp;t/ha at 6.5&nbsp;mm, giving 7.89). With
+it, 2026 is treated as the driest harvest we have actually observed — 2022 — and the
+correction is <b>+0.05&nbsp;t/ha, giving 7.75</b>.</p>
+<p>The clamp is not cosmetic. Rain at harvest can only <i>reduce</i> what reaches the barn
+relative to the standing crop; it cannot raise it. Below the driest harvest on record there
+are no losses left to correct for, so the correction should flatten rather than keep
+growing.</p>
+
+<h2 id="area"><span class="num">4</span>Area — and the 2020 tell</h2>
+<figure>
+  <img class="fig" src="figures/fig3_area.png?v=46c54e5"
+       alt="Grouped bar chart of wheat area 2019-2025, Defra UK all-wheat versus satellite GB winter wheat; 2020 shows a large gap.">
+  <figcaption>Area correlates at r = +0.97, with our figure running at 94% of Defra's.</figcaption>
+</figure>
+<div class="callout">
+  <h3>2020 is the exception that proves the method</h3>
+  <p>Our area falls to <b>73%</b> of Defra's that year — a far larger gap than any other. The
+  flooded autumn of 2019 stopped winter wheat being drilled, and growers switched to
+  <i>spring</i> wheat, which Defra counts and this product, by design, does not.</p>
+  <p style="margin-bottom:0">The product detected a national change in cropping. That is a
+  capability, not a discrepancy — and it is the kind of shift that moves a balance sheet
+  months before it appears in official statistics.</p>
+</div>
+
+
+<h2 id="variation"><span class="num">5</span>The variation is between fields, not a uniform drop</h2>
+<figure>
+  <img class="fig" src="figures/fig10_region_ridgeline.png?v=46c54e5"
+       alt="Ridgeline chart of 2026 field yield distributions for ten regions, ordered by median from East Midlands 7.45 at the bottom to Scotland and North East 8.32 at the top, with each region's area in kha and percentage of crop below 6 t/ha.">
+  <figcaption>One distribution per region, every mapped field weighted by area, ordered by
+    median. Each shape is scaled to its own peak, so the area column carries magnitude.
+    The dashed line is the national median; the red line marks 6&nbsp;t/ha.</figcaption>
+</figure>
+<p>A single national average hides what the field-level map shows plainly. Across
+<b>198,515 fields</b>:</p>
+<table><thead><tr><th>Statistic</th><th>Value</th></tr></thead><tbody>
+<tr><td>Area-weighted mean</td><td>7.70 t/ha raw (fitted route 7.75)</td></tr>
+<tr><td>Standard deviation</td><td>1.03 t/ha (CV 13.3%)</td></tr>
+<tr><td>5th – 95th percentile</td><td>5.72 – 9.11 t/ha</td></tr>
+<tr><td class="hi">Best fields vs worst</td><td class="hi">1.59×</td></tr>
+<tr><td>Area below 6 t/ha</td><td>7.1% of the crop, 111 kha</td></tr>
+<tr><td>Area above 9 t/ha</td><td>7.6% of the crop, 118 kha</td></tr>
+</tbody></table>
+<p>So 2026 is not a season in which the crop failed everywhere. <b>131&nbsp;kha is genuinely
+poor, below 6&nbsp;t/ha — and at the same time 122&nbsp;kha is yielding above 9.</b> Reports of
+severe individual losses and our moderate national average are both true, and the field-level
+map is what reconciles them.</p>
+<h3>By region — where the damage sits</h3>
+<table><thead><tr><th>Region</th><th>Median</th><th>p10 – p90</th><th>Area (kha)</th>
+<th>% below 6</th><th>% above 9</th></tr></thead><tbody>
+<tr><td>North East</td><td>8.32</td><td>6.90 – 9.18</td><td>60</td><td>2.9%</td><td>17.0%</td></tr>
+<tr><td>Scotland</td><td>8.32</td><td>7.14 – 9.18</td><td>124</td><td>1.6%</td><td>16.1%</td></tr>
+<tr><td class="hi">Yorkshire &amp; Humber</td><td class="hi">8.24</td><td>6.74 – 9.11</td><td class="hi">211</td><td>4.0%</td><td>14.5%</td></tr>
+<tr><td>West Midlands</td><td>8.00</td><td>6.59 – 8.87</td><td>138</td><td>4.6%</td><td>6.3%</td></tr>
+<tr><td>South West</td><td>8.00</td><td>6.66 – 8.79</td><td>140</td><td>3.8%</td><td>4.9%</td></tr>
+<tr><td>Wales</td><td>7.92</td><td>6.59 – 8.87</td><td>18</td><td>4.6%</td><td>6.5%</td></tr>
+<tr><td>North West</td><td>7.77</td><td>6.03 – 8.71</td><td>24</td><td>9.5%</td><td>4.5%</td></tr>
+<tr><td>East of England</td><td>7.61</td><td>5.96 – 8.79</td><td>431</td><td>10.4%</td><td>5.8%</td></tr>
+<tr><td>South East</td><td>7.61</td><td>6.03 – 8.63</td><td>198</td><td>9.4%</td><td>3.5%</td></tr>
+<tr><td class="hi">East Midlands</td><td class="hi">7.45</td><td>5.80 – 8.63</td><td class="hi">303</td><td class="hi">13.2%</td><td>3.9%</td></tr>
+</tbody></table>
+<p>The two lowest-yielding regions are also two of the three largest: <b>East Midlands
+(303&nbsp;kha, 13.2% of its crop below 6&nbsp;t/ha)</b> and <b>East of England
+(431&nbsp;kha, 10.4%)</b>. Together they hold 734&nbsp;kha — 45% of the national crop — and
+they are where the losses are concentrated.</p>
+<p>What holds the national figure up is <b>Yorkshire &amp; the Humber</b>: a median of 8.24
+on <b>211&nbsp;kha</b>, with 14.5% of its crop above 9&nbsp;t/ha and only 4.0% below 6.
+Scotland and the North East have equally strong distributions but on 124 and 60&nbsp;kha, so
+they lift the average far less. Wales, at 18&nbsp;kha, barely moves it at all.</p>
+<div class="callout">
+  <h3>The gradient matches what growers are reporting</h3>
+  <p>The <b>South East median is 7.61&nbsp;t/ha against Yorkshire &amp; the Humber at
+  8.24</b> — and the difference is in the whole distribution, not just the average: 9.4% of
+  the South East crop is below 6&nbsp;t/ha against 4.0% in Yorkshire, and 14.5% of Yorkshire
+  is above 9&nbsp;t/ha against 3.5% in the South East.</p>
+  <p style="margin-bottom:0">That is the pattern coming out of the harvest itself: regional
+  reporting has put East Yorkshire crops at 9.5&nbsp;t/ha and the Lincolnshire coast at
+  10–12&nbsp;t/ha, against 4.8&nbsp;t/ha in Gloucestershire. Our independent estimate agrees
+  with the growers, region by region.</p>
+</div>
+
+<h2 id="regional"><span class="num">6</span>Where the losses fell</h2>
+<figure>
+  <img class="fig" src="figures/fig4_regional.png?v=46c54e5"
+       alt="Horizontal bar chart of 2026 wheat yield by region, Scotland highest at 8.27 t/ha and East Midlands lowest at 7.31, with wheat area labelled.">
+  <figcaption>Regions ranked by 2026 forecast yield, with mapped wheat area on each bar.</figcaption>
+</figure>
+<p>Yield rises <b>+0.117&nbsp;t/ha per degree of latitude</b> (r&nbsp;=&nbsp;+0.68) and falls
+<b>−0.108&nbsp;t/ha per degree east</b> (r&nbsp;=&nbsp;−0.60). Read as drought exposure rather
+than latitude, the ordering is coherent: the wetter north and west held up, the dry east
+did not — and the South West, southernmost but maritime, sits mid-table rather than bottom.</p>
+<p><b>The three lowest-yielding regions hold 932&nbsp;kha between them — over half the
+national crop.</b> That is why a moderate yield anomaly still carries a material production
+effect.</p>
+<p>Independent reporting corroborates the pattern: commentary that England carried the worst
+of the moisture stress while Scotland and Wales fared better, and regional harvest reports of
+East Yorkshire at 9.5&nbsp;t/ha and the Lincolnshire coast at 10–12&nbsp;t/ha against
+Gloucestershire at 4.8&nbsp;t/ha.</p>
+
+<h2 id="revisions"><span class="num">7</span>Official figures are forecasts too</h2>
+<figure>
+  <img class="fig" src="figures/fig5_timeliness.png?v=46c54e5"
+       alt="Timeline showing the satellite forecast running weekly from May, AHDB harvest survey July to September, Defra provisional in October and Defra UK final in December to January.">
+  <figcaption>When each estimate becomes available through the season.</figcaption>
+</figure>
+<p>The satellite forecast updates <b>weekly from May</b>. The first official England
+provisional appears in October; the UK final in December or January — four to eight months
+after this product first reports.</p>
+<p>Those official figures are themselves estimates, and they move. Defra's own publications
+show it:</p>
+<table><thead><tr><th>Revision</th><th>From</th><th>To</th><th>Change</th></tr></thead>
+<tbody>
+<tr><td>2022 UK wheat area</td><td>1,809 kha</td><td>1,813 kha</td><td>+4 kha</td></tr>
+<tr><td>2023 UK production</td><td>13,890 kt</td><td>13,980 kt</td><td>+90 kt</td></tr>
+<tr><td>2025 UK production</td><td>AHDB provisional</td><td>Defra final</td><td>+122 kt (+1%)</td></tr>
+</tbody></table>
+<p>The first two are revisions between successive <i>Agriculture in the United Kingdom</i>
+editions — that is, <b>after the harvest year had closed</b>. The 2024 final was published on
+7 January 2025, months after the October provisional.</p>
+<p>This matters for reading any single in-season number, including ours and including
+AHDB's.</p>
+
+<h2 id="field"><span class="num">8</span>Every field, and the variation inside it</h2>
+<figure>
+  <img class="fig" src="figures/fig6_field_detail.png?v=46c54e5"
+       alt="10 m resolution yield map of an 8 km square in eastern England, showing individual fields and variation within them.">
+  <figcaption>10 m resolution, 8 km across. Official statistics stop at county level.</figcaption>
+</figure>
+<p>200,161 parcels are mapped individually, and the variation <i>within</i> each field is
+resolved — which is the scale at which agronomic decisions are actually made. The
+<a href="./">live portal</a> carries this for every week of the season.</p>
+
+<h2 id="disagree"><span class="num">9</span>The open disagreement</h2>
+<div class="callout warn">
+  <p style="margin-top:0">AHDB's harvest survey at 85% cut reports <b>6.7&nbsp;t/ha</b>,
+  roughly 15% below its ten-year average. Our raw forecast is <b>7.70</b> (fitted route 7.75). The gap is
+  <b>1.05&nbsp;t/ha</b>, and we publish it rather than reconcile it.</p>
+  <p>The correction <i>widens</i> this gap rather than closing it, and that is the honest
+  consequence of applying it consistently: a record-dry July means there were almost no
+  harvest losses to subtract, so the raw estimate needs almost no adjustment down. We apply
+  the same model to 2026 that we apply to every other year.</p>
+  <p><b>Four things bear on it, none settled:</b></p>
+  <ol style="margin:8px 0 0">
+    <li><b>Our cutoff is 1 August.</b> July 2026 was the driest on record in England
+      (6.5&nbsp;mm, 10% of average). Damage after the cutoff cannot be in this forecast, and
+      the correction models <i>harvest</i> losses, not in-season drought stress — a failure
+      mode this model has never been trained on at this severity.</li>
+    <li><b>AHDB is a survey in progress.</b> Its figure moved 6.8 → 6.7 as coverage rose from
+      54% to 85%, and provisional estimates have been revised before — upward, in 2025.</li>
+    <li><b>The moisture conventions differ.</b> Our calibration targets are standardised
+      (≈14.5–15% grain) yields; the survey reports dry delivered tonnage. With this
+      harvest at 12–13% moisture that is worth about 0.15–0.2&nbsp;t/ha of the gap: on a
+      common basis our 7.70 reads 7.48–7.57 against the survey's 6.7.</li>
+    <li><b>The basis is already accounted for.</b> The corrected figure maps to the
+      all-wheat UK basis via the Defra-fitted correction, so the winter-wheat premium
+      explains none of this gap — it cannot be invoked twice.</li>
+  </ol>
+  <p style="margin-bottom:0">Later forecast issues will show whether the model converges
+  toward the survey as end-of-season observations accumulate. That test is public and
+  falsifiable.</p>
+</div>
+
+<h2 id="method"><span class="num">10</span>Method, limits and data</h2>
+<p>Sentinel-2 optical time series over the GB arable belt are classified weekly by a temporal
+sequence model into winter wheat / not winter wheat, then refined to 5&nbsp;m field parcels. A second
+model forecasts yield per 10&nbsp;m pixel; the published field value is the parcel mean.</p>
+<p>Published yields are then <b>corrected for harvest-period losses</b> using England July
+rainfall, fitted against Defra finals 2019–2025 (<a href="#bias">section 3</a>). The
+correction is national and applied uniformly, since the relationship is fitted against a
+national series; regional figures carry the same shift. Rainfall is clamped to the fitted
+23–122&nbsp;mm domain.</p>
+<p><b>Area</b> is a direct count of classified 5&nbsp;m pixels on the deduplicated field map —
+the area <i>of the published picture</i>, so the number and the map cannot disagree (they
+reconcile to −0.022%). Where Sentinel-2 tiles overlap, each location is attributed to the tile
+whose valid data it sits deepest inside, so the belt never double-counts seams.</p>
+
+<h3>Limits, stated plainly</h3>
+<ul>
+  <li><b>Area uncertainty is transferred, not measured in-season.</b> The published area
+    carries a <b>90% CI of ±1.0% (±16 kha)</b> — converted to the product-wide 90% level
+    from the ±1.2% (95%) reported by an Olofsson accuracy assessment of this pipeline's 2025
+    hindcast against settled reference labels: 50,009 points; wheat user's accuracy 0.94,
+    producer's 0.91. Every published interval on this page is now a 90% interval. The same assessment measures an omission-led adjustment
+    factor of <b>+6.3%</b> which is <i>disclosed, not applied</i>: the published number stays
+    a direct pixel count of the map, so the number and the map cannot disagree. Both the CI
+    and the unapplied factor assume 2025-measured accuracy carries to 2026.</li>
+  <li><b>Cloud gaps under-report.</b> A week processed during a cloud gap reads low and steps
+    up at the next clear window. Per-week observation support is published with each issue.</li>
+  <li><b>Yield uncertainty is dominated by a systematic term</b> (0.35 t/ha) that does not
+    average down nationally. Field validation against observed combine yields gives
+    r&nbsp;=&nbsp;0.85 over 270 fields.</li>
+  <li><b>2018 is absent from the Defra comparison</b> because a 2018 UK wheat table could not
+    be sourced. It is excluded rather than estimated.</li>
+</ul>
+
+<h3>Data and provenance</h3>
+<p>Live portal: <a href="./"><b>wheat.rayx.co.uk</b></a> — weekly maps at field and
+within-field level, with per-region statistics.</p>
+<p>External benchmarks are recorded <b>append-only</b> with provenance: a revised official
+figure is added as a new record naming the one it supersedes, never overwritten. That
+discipline is what made the revision analysis in section 5 possible.</p>
+
+</main>
+
+<footer class="wrap">
+  <p><b>Sources.</b> Defra, <i>Agriculture in the United Kingdom</i>, Table 7.2a (2021, 2023
+  and 2025 editions); Defra, <i>Cereal and oilseed production in the United Kingdom</i>; AHDB
+  GB harvest progress reports; UKCEH Land Cover plus: Crops (© UKCEH, accessed via EDINA
+  Digimap under licence) for the multi-year reference product; Sentinel-2 surface reflectance
+  (ESA Copernicus).</p>
+  <p>Forecasts are research output, provided without warranty. Satellite estimates are not
+  measurements; they are best used for patterns and comparisons — between fields, regions and
+  years — rather than as an exact figure for any single field.</p>
+  <p>Produced by UCL and the National Centre for Earth Observation (NCEO), with the UK Centre
+  for Ecology &amp; Hydrology (UKCEH), as part of the AgZero+ project.</p>
+</footer>
+</body>
+</html>

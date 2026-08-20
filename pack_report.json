@@ -1,0 +1,35 @@
+{
+ "total_bytes": 67777418,
+ "n_files": 20,
+ "n_fields": 200161,
+ "per_week_area_ha": {
+  "2026-07-13": 1550072.25,
+  "2026-07-20": 1550614.125,
+  "2026-07-27": 1552073.75,
+  "2026-08-03": 1553410.375,
+  "2026-08-10": 1555800.75,
+  "2026-08-17": 1557969.375
+ },
+ "sizes": {
+  "manifest.json": 639017,
+  "index.html": 37593,
+  "README.md": 3437,
+  ".gitignore": 204,
+  "CNAME.example": 19,
+  ".nojekyll": 0,
+  "tiles/fields.pmtiles": 53106994,
+  "values/2026-07-13.bin": 400326,
+  "values/2026-07-20.bin": 400326,
+  "values/2026-07-27.bin": 400326,
+  "values/2026-08-03.bin": 400326,
+  "values/2026-08-10.bin": 400326,
+  "values/2026-08-17.bin": 400326,
+  "admin/admin_country.geojson": 2302198,
+  "admin/admin_region.geojson": 2469263,
+  "admin/admin_county.geojson": 2637390,
+  "admin/admin_lad.geojson": 3151162,
+  "lib/maplibre-gl.js": 939269,
+  "lib/maplibre-gl.css": 69422,
+  "lib/pmtiles.js": 19494
+ }
+}
